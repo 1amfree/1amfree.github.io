@@ -4,10 +4,15 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="pwntools构造ret2dlresolve模板, 1amfree">
-    <meta name="description" content="pwntools构造ret2dlresolve模板Help on class Ret2dlresolvePayload in module pwnlib.rop.ret2dlresolve:
+    <meta name="keywords" content="机组二进制运算总结, 1amfree">
+    <meta name="description" content="加法减法运算[X]补 + [Y]补 = [X+Y]补
+[X]补 - [Y]补 = [X-Y]补
+进位产生的超出机器字长的部分，舍掉（被模掉了）
 
-class Ret2dlresolvePayl">
+溢出判断方法：
+单符号位判断法：
+    结果符号判断法：
+        同号相加：结果符号">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -30,7 +35,7 @@ class Ret2dlresolvePayl">
     </style>
 
 
-    <title>pwntools构造ret2dlresolve模板 | 1amfree</title>
+    <title>机组二进制运算总结 | 1amfree</title>
     <link rel="icon" type="image/jpeg" href="/logo.jpeg">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -240,12 +245,12 @@ class Ret2dlresolvePayl">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/9.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">pwntools构造ret2dlresolve模板</h1>
+                    <h1 class="description center-align post-title">机组二进制运算总结</h1>
                 </div>
             </div>
         </div>
@@ -361,8 +366,8 @@ class Ret2dlresolvePayl">
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/pwn/">
-                                <span class="chip bg-color">pwn</span>
+                            <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">
+                                <span class="chip bg-color">计算机组成原理</span>
                             </a>
                         
                     </div>
@@ -373,8 +378,8 @@ class Ret2dlresolvePayl">
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/pwn/" class="post-category">
-                                pwn
+                            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" class="post-category">
+                                计算机组成原理
                             </a>
                         
                     </div>
@@ -386,28 +391,28 @@ class Ret2dlresolvePayl">
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-02-15
+                    2022-05-05
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-04-21
+                    2022-05-07
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    247
+                    1.6k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    6 分
                 </div>
                 
 
@@ -435,45 +440,125 @@ class Ret2dlresolvePayl">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="pwntools构造ret2dlresolve模板"><a href="#pwntools构造ret2dlresolve模板" class="headerlink" title="pwntools构造ret2dlresolve模板"></a>pwntools构造ret2dlresolve模板</h1><pre class="line-numbers language-python" data-language="python"><code class="language-python">Help on class Ret2dlresolvePayload in module pwnlib.rop.ret2dlresolve:
+                <h2 id="加法减法运算"><a href="#加法减法运算" class="headerlink" title="加法减法运算"></a>加法减法运算</h2><pre class="line-numbers language-txt" data-language="txt"><code class="language-txt">[X]补 + [Y]补 = [X+Y]补
+[X]补 - [Y]补 = [X-Y]补
+进位产生的超出机器字长的部分，舍掉（被模掉了）
 
-class Ret2dlresolvePayload(__builtin__.object)
- |  Methods defined here:
- |  
- |  __init__(self, elf, symbol, args, data_addr&#x3D;None)
- |  
- |  ----------------------------------------------------------------------
- |  Data descriptors defined here:
- |  
- |  __dict__
- |      dictionary for instance variables (if defined)
- |  
- |  __weakref__
- |      list of weak references to the object (if defined)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+溢出判断方法：
+单符号位判断法：
+    结果符号判断法：
+        同号相加：结果符号与被加数相异则溢出
+        异号相减：结果符号与被减数相异则溢出
+    进位符号判断法：
+        数值最高进位值与符号位进位相异则溢出
+双符号位判别法（通过实现变形补码实现）：
+    双符号位参与运算，结果双符号位相异则溢出
+    00：正数	11：负数	01：正溢出	10：负溢出
+    第一位符号位为运算结果的真正符号位<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>elf：相应的文件</p>
-<p>symbol：函数名称</p>
-<p>args：函数参数</p>
-<p>data_addr：该payload所在的地址(默认会会放在bss比较高的地址上)</p>
-<p>常用方法（用之前要设置context.binary和elf）</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">dlresolve &#x3D; Ret2dlresolvePayload(elf,symbol&#x3D;&quot;system&quot;,args&#x3D;[&quot;&#x2F;bin&#x2F;sh&quot;],data_addr&#x3D;0x804ad00)#data_addr直接默认也行，它会自己找到一个合适的地址<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="浮点数表示范围"><a href="#浮点数表示范围" class="headerlink" title="浮点数表示范围"></a>浮点数表示范围</h2><p><img src="/../pictures/%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%8A%A0%E5%87%8F%E4%B9%98%E9%99%A4%E6%B3%95%E6%80%BB%E7%BB%93/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20220505004244.png"></p>
+<p><img src="/../pictures/%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%8A%A0%E5%87%8F%E4%B9%98%E9%99%A4%E6%B3%95%E6%80%BB%E7%BB%93/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20220505004323.png"></p>
+<p><img src="/../pictures/%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%8A%A0%E5%87%8F%E4%B9%98%E9%99%A4%E6%B3%95%E6%80%BB%E7%BB%93/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20220505004558.png" alt="微信图片_20220505004558"></p>
+<h2 id="乘法运算"><a href="#乘法运算" class="headerlink" title="乘法运算"></a>乘法运算</h2><h3 id="原码乘法"><a href="#原码乘法" class="headerlink" title="原码乘法"></a>原码乘法</h3><h4 id="原码一位乘法"><a href="#原码一位乘法" class="headerlink" title="原码一位乘法"></a>原码一位乘法</h4><pre class="line-numbers language-none"><code class="language-none">符号位单独处理：X0⊕Y0
+乘数当前末位为0，加0后部分积右移一位；乘数当前末位为1，加|X|后部分积右移一位。
+最后一次相加后的结果也要右移，有几位就要右移几次
+部分积采用双符号位<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>print(rop.dump())可以查看rop链内容</p>
-<p>以上来自TTYflag师傅的介绍</p>
-<p>在使用前先指定</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">rop&#x3D;ROP(&quot;.&#x2F;pwn&quot;)
-#pwntools模板
-dlresolve &#x3D; Ret2dlresolvePayload(elf, symbol&#x3D;&quot;system&quot;, args&#x3D;[&quot;&#x2F;bin&#x2F;sh&quot;])
-rop.read(0, dlresolve.data_addr)
-rop.ret2dlresolve(dlresolve)
-info(rop.dump()) #查看rop信息
-payload&#x3D;fit(&#123;0x4C: rop.chain(), 0x100: dlresolve.payload&#125;)
-#0x4c是写入rop链的地方，0x100是read读入的大小。
-#fit就是填充一下
-r.sendline(payload)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><img src="/../pictures/%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%8A%A0%E5%87%8F%E4%B9%98%E9%99%A4%E6%B3%95%E6%80%BB%E7%BB%93/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20220505005230.png"></p>
+<h4 id="原码两位乘法"><a href="#原码两位乘法" class="headerlink" title="原码两位乘法"></a>原码两位乘法</h4><pre class="line-numbers language-none"><code class="language-none">1.原码两位乘法和原码一位乘法一样，符号位不参加运算
+2.部分积和被乘数x均采用三位符号，乘数y末位每次要加一个c，c一开始是0
+3.根据如下法则进行运算：
+    · 000 -》 部分积加0，   右移两位，c变为0
+    · 001 -》 部分积加|x|， 右移两位，c变为0
+    · 010 -》 部分积加|x|， 右移两位，c变为0
+    · 011 -》 部分积加2|x|，右移两位，c变为0
+    · 100 -》 部分积加2|x|，右移两位，c变为0
+    · 101 -》 部分积减|x|， 右移两位，c变为1
+    · 110 -》 部分积减|x|， 右移两位，c变为1
+    · 111 -》 部分积加0，   右移两位，c变为1
+    
+    其中减|x|等价于加[-|X|]补，因此在计算前，需要准备|X|（用三符号位）,2|X|（用三符号位）,[-|X|]补（用三符号位） 和 |Y|（用单符号位）,
+4.而乘数y用双符号还是单符号表示得根据乘数y的数值的奇偶性判断，而且最后一步移位与否也与乘数y的数值的奇偶性有关：
+    · 如果乘数y的尾数n的位数为偶数，则乘数y用双符号表示，最后一步不移位
+    · 如果乘数y的尾数n的位数为奇数，则乘数y用单符号表示，最后一步要移一位<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
+<p><img src="/../pictures/%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%8A%A0%E5%87%8F%E4%B9%98%E9%99%A4%E6%B3%95%E6%80%BB%E7%BB%93/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20220505010727.png"></p>
+<p><img src="/../pictures/%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%8A%A0%E5%87%8F%E4%B9%98%E9%99%A4%E6%B3%95%E6%80%BB%E7%BB%93/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20220505010730.png"></p>
+<h3 id="定点数补码乘法"><a href="#定点数补码乘法" class="headerlink" title="定点数补码乘法"></a>定点数补码乘法</h3><p>补码乘法：符号位在运算中同时产生（不需要单独运算）</p>
+<h4 id="定点数补码一位乘"><a href="#定点数补码一位乘" class="headerlink" title="定点数补码一位乘"></a>定点数补码一位乘</h4><h5 id="校正法"><a href="#校正法" class="headerlink" title="校正法"></a>校正法</h5><pre class="line-numbers language-none"><code class="language-none">乘数的补码 [Y]补 去掉符号位，当成正数与被乘数 [X]补 按照同原码一致的方法相乘
+两个n位数相乘，共做n次加法和n次移位
+部分积采用双符号位
+右移时按照补码的规则进行（左边补符号位）
+*乘数为负数时，最后求出的部分 +[-X]补 进行修正，但是不进行移位操作<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
+<p><img src="/../pictures/%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%8A%A0%E5%87%8F%E4%B9%98%E9%99%A4%E6%B3%95%E6%80%BB%E7%BB%93/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20220505012124.png"></p>
+<p><img src="/../pictures/%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%8A%A0%E5%87%8F%E4%B9%98%E9%99%A4%E6%B3%95%E6%80%BB%E7%BB%93/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20220505012128.png"></p>
+<h5 id="比较法"><a href="#比较法" class="headerlink" title="比较法"></a>比较法</h5><pre class="line-numbers language-none"><code class="language-none">部分积和被乘数使用双符号位，乘数采用一位符号位
+需要在乘数的末位加上一位附加位，附加位初始值为0，Yn+1&#x3D;0
+通过比较末两位决定操作：
+	 若Yn＋1＜Yn，部分积＋[-X]补，
+     若Yn＋1＝Yn，部分积＋0，
+     若Yn＋1＞Yn，部分积＋[X]补。
+     
+     若Yn&#x3D;0，Yn+1&#x3D;0，部分积＋0，右移
+     若Yn&#x3D;0，Yn+1&#x3D;1，部分积＋[X]补，右移
+     若Yn&#x3D;1，Yn+1&#x3D;0，部分积＋[-X]补，右移
+     若Yn&#x3D;1，Yn+1&#x3D;1，部分积＋0，右移
+     
+最后一次加法运算不移位<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
+<p><img src="/../pictures/%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%8A%A0%E5%87%8F%E4%B9%98%E9%99%A4%E6%B3%95%E6%80%BB%E7%BB%93/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20220505013239.png"></p>
+<p><img src="/../pictures/%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%8A%A0%E5%87%8F%E4%B9%98%E9%99%A4%E6%B3%95%E6%80%BB%E7%BB%93/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20220505013145.png"></p>
+<h4 id="定点数补码两位乘（比较法）"><a href="#定点数补码两位乘（比较法）" class="headerlink" title="定点数补码两位乘（比较法）"></a>定点数补码两位乘（比较法）</h4><pre class="line-numbers language-none"><code class="language-none">补码两位乘法，根据附加位和部分积后两位值的情况，确定下一步操作。即根据当前的Yn-1,Yn,Yn+1的值，来确定下一步的操作。
+组合值为（Yn+Yn+1-2*Yn-1），组合值为a，就加上a*[X]补<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p><img src="/../pictures/%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%8A%A0%E5%87%8F%E4%B9%98%E9%99%A4%E6%B3%95%E6%80%BB%E7%BB%93/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20220505014225.png" alt="微信图片_20220505014225"></p>
+<p>太不好解释了，直接粘贴ppt了</p>
+<p>补码两位乘比较法规则说明</p>
+<p><img src="/../pictures/%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%8A%A0%E5%87%8F%E4%B9%98%E9%99%A4%E6%B3%95%E6%80%BB%E7%BB%93/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20220505014227.png"></p>
+<p><img src="/../pictures/%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%8A%A0%E5%87%8F%E4%B9%98%E9%99%A4%E6%B3%95%E6%80%BB%E7%BB%93/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20220505014230.png"></p>
+<p><img src="/../pictures/%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%8A%A0%E5%87%8F%E4%B9%98%E9%99%A4%E6%B3%95%E6%80%BB%E7%BB%93/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20220505014232.png" alt="微信图片_20220505014232"></p>
+<h2 id="二进制除法运算"><a href="#二进制除法运算" class="headerlink" title="二进制除法运算"></a>二进制除法运算</h2><h3 id="定点原码一位除"><a href="#定点原码一位除" class="headerlink" title="定点原码一位除"></a>定点原码一位除</h3><h4 id="恢复余数法"><a href="#恢复余数法" class="headerlink" title="恢复余数法"></a>恢复余数法</h4><pre class="line-numbers language-none"><code class="language-none">符号位单独处理，C0&#x3D;X0⊕Y0,运算时采用绝对值进行运算。
+要求|X|&lt;|Y|,否则溢出
+|X|-|Y|&#x3D;R0,若R0&lt;0;商0，然后R0+|Y|,恢复余数，运算完后左移一位
+|X|-|Y|&#x3D;R0,若R0&gt;&#x3D;0;商1，运算完后左移一位<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>恢复余数法规则：</p>
+<p><img src="/../pictures/%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%8A%A0%E5%87%8F%E4%B9%98%E9%99%A4%E6%B3%95%E6%80%BB%E7%BB%93/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20220505015553.png"></p>
+<p><img src="/../pictures/%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%8A%A0%E5%87%8F%E4%B9%98%E9%99%A4%E6%B3%95%E6%80%BB%E7%BB%93/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20220505015555.png"></p>
+<p><img src="/../pictures/%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%8A%A0%E5%87%8F%E4%B9%98%E9%99%A4%E6%B3%95%E6%80%BB%E7%BB%93/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20220505015558.png"></p>
+<h4 id="加减交替法"><a href="#加减交替法" class="headerlink" title="加减交替法"></a>加减交替法</h4><pre class="line-numbers language-none"><code class="language-none">与恢复余数法不同的是，在每次运算完成后，判断余数R0的正负。若R0&gt;&#x3D;0，上1，余数左移一位，减去|Y0|（等价于 +[-|Y0|]补 ），余数为正数，表明上一步够减，因此减去|Y0|；若R0&lt;0，上0，余数左移一位，加上|Y0|，余数为负数，表明上一步不够减，因此加上|Y0|。最开始运算为|X0|-|Y0|。<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>原码一位除加减交替法规则</p>
+<p><img src="/../pictures/%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%8A%A0%E5%87%8F%E4%B9%98%E9%99%A4%E6%B3%95%E6%80%BB%E7%BB%93/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20220505020432.png"></p>
+<p><img src="/../pictures/%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%8A%A0%E5%87%8F%E4%B9%98%E9%99%A4%E6%B3%95%E6%80%BB%E7%BB%93/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20220505020435.png"></p>
+<p><img src="/../pictures/%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%8A%A0%E5%87%8F%E4%B9%98%E9%99%A4%E6%B3%95%E6%80%BB%E7%BB%93/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20220505020438.png"></p>
+<h3 id="定点补码一位除"><a href="#定点补码一位除" class="headerlink" title="定点补码一位除"></a>定点补码一位除</h3><h4 id="加减交替法-1"><a href="#加减交替法-1" class="headerlink" title="加减交替法"></a>加减交替法</h4><pre class="line-numbers language-none"><code class="language-none">被除数采用双符号位，除数采用单符号位。
+第一步根据除数与被除数的符号来进行下一步操作：
+    被除数与除数同号，[X]补-[Y]补
+    被除数与除数异号，[X]补+[Y]补
+第二步（之后）根据余数和除数的符号判断下一步操作：
+    余除同号，上商1，左移一位，-[Y]补
+    余除异号，上商0，左移一位，+[Y]补
+补码除法求商有误差，求出来的商为反码，需要对商进行修正，一般末位恒置一
+余数也需要进行修正，余数与被除数符号一致。不一致时，需要恢复余数。若为正商，余除异号，[Ri+1]补+[Y]补；若为负商，余除同号，[Ri+1]补-[Y]补。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><img src="/../pictures/%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%8A%A0%E5%87%8F%E4%B9%98%E9%99%A4%E6%B3%95%E6%80%BB%E7%BB%93/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20220505022411.png"></p>
+<p><img src="/../pictures/%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%8A%A0%E5%87%8F%E4%B9%98%E9%99%A4%E6%B3%95%E6%80%BB%E7%BB%93/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20220505022414.png"></p>
+<p><img src="/../pictures/%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%8A%A0%E5%87%8F%E4%B9%98%E9%99%A4%E6%B3%95%E6%80%BB%E7%BB%93/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20220505022417.png"></p>
+<p><img src="/../pictures/%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%8A%A0%E5%87%8F%E4%B9%98%E9%99%A4%E6%B3%95%E6%80%BB%E7%BB%93/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20220505022420.png"></p>
+<p><img src="/../pictures/%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%8A%A0%E5%87%8F%E4%B9%98%E9%99%A4%E6%B3%95%E6%80%BB%E7%BB%93/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20220505022423.png"></p>
+<p><img src="/../pictures/%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%8A%A0%E5%87%8F%E4%B9%98%E9%99%A4%E6%B3%95%E6%80%BB%E7%BB%93/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20220505022426.png"></p>
+<h4 id="比较法-1"><a href="#比较法-1" class="headerlink" title="比较法"></a>比较法</h4><pre class="line-numbers language-none"><code class="language-none">和加减交替法基本上一致，但是改进了第一步的判断。将第一步的被除数看做余数，直接与除数比较，采用统一的上商计算方法。（第一步上来就根据被除数正负上商，并左移）
+规则：
+    余除同号，上商1，左移一位，-[Y]补（减去除数）
+    余除异号，上商0，左移一位，+[Y]补（加上除数）<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><img src="/../pictures/%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%8A%A0%E5%87%8F%E4%B9%98%E9%99%A4%E6%B3%95%E6%80%BB%E7%BB%93/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20220505023227.png"></p>
+<p><img src="/../pictures/%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%8A%A0%E5%87%8F%E4%B9%98%E9%99%A4%E6%B3%95%E6%80%BB%E7%BB%93/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20220505023230.png"></p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><h3 id="乘法文章推荐"><a href="#乘法文章推荐" class="headerlink" title="乘法文章推荐"></a>乘法文章推荐</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_43309315/article/details/107582972">https://blog.csdn.net/qq_43309315/article/details/107582972</a></p>
+<h3 id="除法文章推荐"><a href="#除法文章推荐" class="headerlink" title="除法文章推荐"></a>除法文章推荐</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_45954145/article/details/118405136">https://blog.csdn.net/qq_45954145/article/details/118405136</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_45954145/article/details/118405462">https://blog.csdn.net/qq_45954145/article/details/118405462</a></p>
 
                 
             </div>
@@ -500,7 +585,7 @@ r.sendline(payload)<span aria-hidden="true" class="line-numbers-rows"><span></sp
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://1amfree.github.io.com/posts/1010.html">http://1amfree.github.io.com/posts/1010.html</a>
+                    <a href="http://1amfree.github.io.com/posts/45720.html">http://1amfree.github.io.com/posts/45720.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -538,8 +623,8 @@ r.sendline(payload)<span aria-hidden="true" class="line-numbers-rows"><span></sp
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/pwn/">
-                                    <span class="chip bg-color">pwn</span>
+                                <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">
+                                    <span class="chip bg-color">计算机组成原理</span>
                                 </a>
                             
                         </div>
@@ -584,7 +669,7 @@ r.sendline(payload)<span aria-hidden="true" class="line-numbers-rows"><span></sp
         repo: '1amfree.github.io',
         owner: '1amfree',
         admin: "1amfree",
-        id: '2020-02-15T14-18-46',
+        id: '2022-05-05T00-23-25',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -618,13 +703,13 @@ r.sendline(payload)<span aria-hidden="true" class="line-numbers-rows"><span></sp
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/posts/45720.html">
+                <a href="/posts/43930.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="机组二进制运算总结">
+                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="两道IO_FILE题目总结">
                         
-                        <span class="card-title">机组二进制运算总结</span>
+                        <span class="card-title">两道IO_FILE题目总结</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -635,14 +720,14 @@ r.sendline(payload)<span aria-hidden="true" class="line-numbers-rows"><span></sp
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-05-05
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-05-07
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" class="post-category">
-                                    计算机组成原理
+                            <a href="/categories/pwn/" class="post-category">
+                                    pwn
                                 </a>
                             
                             
@@ -652,8 +737,8 @@ r.sendline(payload)<span aria-hidden="true" class="line-numbers-rows"><span></sp
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">
-                        <span class="chip bg-color">计算机组成原理</span>
+                    <a href="/tags/pwn/">
+                        <span class="chip bg-color">pwn</span>
                     </a>
                     
                 </div>
@@ -664,7 +749,7 @@ r.sendline(payload)<span aria-hidden="true" class="line-numbers-rows"><span></sp
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
                 <a href="/posts/1010.html">
@@ -698,7 +783,6 @@ r.sendline(payload)<span aria-hidden="true" class="line-numbers-rows"><span></sp
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
