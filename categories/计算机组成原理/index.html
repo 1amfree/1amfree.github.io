@@ -46,10 +46,12 @@
 
 
 <body>
-    <!--  -->
+    <!--  -->
     <link href="/libs/prism/prism.css" rel="stylesheet" type="text/css" />
     <script src="/libs/others/prism.js" type="text/javascript"></script>
-    <!--  -->
+    <!--  -->
+
+
     <header class="navbar-fixed">
     <nav id="headNav" class="bg-color nav-transparent">
         <div id="navContainer" class="nav-wrapper container">
@@ -295,71 +297,29 @@
                 
                 
                 <a href="/categories/%E8%B6%B3%E7%90%83/" title="足球: 1">
-                    <!-- <span class="chip center-align waves-effect waves-light
+                    <span class="chip center-align waves-effect waves-light
                              chip-default "
                             style="background-color: #F9EBEA;">足球
                         <span class="tag-length">1</span>
-                    </span> -->
-                    <div class="moleskine-wrapper">
-                        <div class="moleskine-notebook">
-                            <div class="chip notebook-cover center-align waves-effect waves-light
-                               chip-default "
-                                style="background-color: #F9EBEA;">
-                                <div
-                                    class="notebook-skin
-                                       chip-default ">
-                                    足球
-                                </div>
-                            </div>
-                            <div class="notebook-page dotted"></div>
-                        </div>
-                    </div>                    
+                    </span>
                 </a>
                 
                 
                 <a href="/categories/pwn/" title="pwn: 2">
-                    <!-- <span class="chip center-align waves-effect waves-light
+                    <span class="chip center-align waves-effect waves-light
                              chip-default "
                             style="background-color: #F5EEF8;">pwn
                         <span class="tag-length">2</span>
-                    </span> -->
-                    <div class="moleskine-wrapper">
-                        <div class="moleskine-notebook">
-                            <div class="chip notebook-cover center-align waves-effect waves-light
-                               chip-default "
-                                style="background-color: #F5EEF8;">
-                                <div
-                                    class="notebook-skin
-                                       chip-default ">
-                                    pwn
-                                </div>
-                            </div>
-                            <div class="notebook-page dotted"></div>
-                        </div>
-                    </div>                    
+                    </span>
                 </a>
                 
                 
                 <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" title="计算机组成原理: 1">
-                    <!-- <span class="chip center-align waves-effect waves-light
+                    <span class="chip center-align waves-effect waves-light
                              chip-active "
                             style="background-color: #D5F5E3;">计算机组成原理
                         <span class="tag-length">1</span>
-                    </span> -->
-                    <div class="moleskine-wrapper">
-                        <div class="moleskine-notebook">
-                            <div class="chip notebook-cover center-align waves-effect waves-light
-                               chip-active "
-                                style="background-color: #D5F5E3;">
-                                <div
-                                    class="notebook-skin
-                                       chip-active ">
-                                    计算机组成原理
-                                </div>
-                            </div>
-                            <div class="notebook-page dotted"></div>
-                        </div>
-                    </div>                    
+                    </span>
                 </a>
                 
                 
@@ -367,130 +327,6 @@
         </div>
     </div>
 </div>
-
-<style>
-
-<style>
-    /* 文章分类书本样式 */
-    .chip-container .tag-chips {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-around;
-    }
-
-    .chip-container .tag-chips a {
-        margin: 0 7px 10px;
-    }
-
-    .chip-container .chip {
-        max-width: calc(100% / 4);
-        min-width: 10em;
-        height: 200px;
-        position: relative;
-        transition: .5s linear;
-        padding: 19px 0;
-        line-height: 20px;
-        z-index: 990;
-        border-radius: 5px 15px 15px 5px;
-        transform-origin: left center 0;
-    }
-
-    .chip-container .notebook-cover::before {
-        content: "";
-        position: absolute;
-        width: 10px;
-        height: calc(100% + 2px);
-        top: -1px;
-        z-index: 100;
-        border-radius: 2px;
-        right: 25px;
-        transition: 2s ease;
-        background: linear-gradient(to right, #1e606e 0, #2e95aa 12%, #1e606e 25%, #2e95aa 37%, #1e606e 50%, #2e95aa 62%, #1e606e 75%, #2e95aa 87%, #1e606e 100%);
-    }
-
-    .chip .notebook-skin {
-        height: 50px;
-        width: 100%;
-        background: #e8e8e0;
-        margin-top: 42px;
-        padding: 10px 32px 64px 10px;
-        font-size: 19px;
-        position: relative;
-        z-index: 10;
-        color: #222;
-        text-align: left;
-        box-shadow: 0 1px 1px rgba(0, 0, 0, .2);
-    }
-
-    .chip .notebook-skin:before {
-        content: '';
-        position: absolute;
-        width: 100%;
-        height: 15px;
-        left: 0;
-        bottom: 0;
-        background: #cddc39;
-    }
-
-    .notebook-cover {
-        background: #cc4b48;
-        height: 200px;
-        width: 140px;
-        position: absolute;
-        border-radius: 5px 15px 15px 5px;
-        z-index: 10;
-        transition: .5s linear;
-        transform-style: preserve-3d;
-        transform-origin: left center 0;
-    }
-
-    .moleskine-wrapper {
-        max-width: calc(100% / 4);
-        min-width: 10em;
-    }
-
-    .moleskine-notebook:hover .notebook-cover {
-        transform: rotateY(-50deg);
-        z-index: 99;
-        box-shadow: 20px 10px 50px rgba(0, 0, 0, .2);
-    }
-
-    .moleskine-notebook {
-        height: 200px;
-        position: relative;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-around;
-        transition: .5s linear;
-        border-radius: 5px 15px 15px 5px;
-        transform-origin: left center 0;
-    }
-
-    .moleskine-notebook:hover {
-        transform: rotateZ(-10deg);
-    }
-
-    .notebook-page.dotted {
-        background: linear-gradient(to bottom, #fbfae8 9px, #e4e4e4 1px);
-        background-size: 100% 10px;
-    }
-
-    .chip-container .chip:hover {
-        filter: invert(.1);
-    }
-
-    .notebook-page {
-        height: 100%;
-        width: 140px;
-        position: absolute;
-        top: 10px;
-        background-color: #fbfae8;
-        z-index: 0;
-        border-radius: 5px 16px 16px 5px;
-        overflow: hidden;
-    }
-</style>
-
 
 
     
@@ -607,7 +443,7 @@
                         var today = new Date();
                         var startYear = "2022";
                         var startMonth = "4";
-                        var startDate = "19";
+                        var startDate = "27";
                         var startHour = "0";
                         var startMinute = "0";
                         var startSecond = "0";
@@ -809,14 +645,23 @@ $(function () {
     
 
     
-        
-        <script type="text/javascript">
-            // 只在桌面版网页启用特效
-            var windowWidth = $(window).width();
-            if (windowWidth > 768) {
-                document.write('<script type="text/javascript" src="/libs/others/sakura.js"><\/script>');
-            }
-        </script>
+
+    <!--单击显示文字-->
+    <script type="text/javascript" src="/js/show_text.js"></script>
+
+
+    <!-- 爆炸红心效果 -->
+    <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+    <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+    <script type="text/javascript" src="/js/firework.js"></script>
+
+    <script type="text/javascript">
+        // 只在桌面版网页启用特效
+        var windowWidth = $(window).width();
+        if (windowWidth > 768) {
+            document.write('<script type="text/javascript" src="/libs/others/sakura.js"><\/script>');
+        }
+    </script>
     
 
     <!-- 雪花特效 -->
@@ -841,6 +686,10 @@ $(function () {
         </script>
     
 
+     
+        <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+        <script src="/libs/others/TencentCaptcha.js"></script>
+        <button id="TencentCaptcha" data-appid="xxxxxxxxxx" data-cbfn="callback" type="button" hidden></button>
     
 
     <!-- Baidu Analytics -->
@@ -883,36 +732,7 @@ $(function () {
     
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
-    
-    <script type="text/javascript">
-        var OriginTitile=document.title,st;
-        document.addEventListener("visibilitychange",function(){
-            document.hidden?(document.title="ヽ(●-`Д´-)ノ你要玩捉迷藏嘛",clearTimeout(st)):(document.title="(Ő∀Ő3)ノ好哦！",st=setTimeout(function(){document.title=OriginTitile},3e3))
-        })
-    </script>
 
-    <!-- 弹出文字 -->
-    
-        <script type="text/javascript">
-            // 只在桌面版网页启用特效
-            var windowWidth = $(window).width();
-            if (windowWidth > 768) {
-                document.write(
-                    '<script type="text/javascript" src="/libs/others/popupText.js"><\/script>'
-                );
-            }
-        </script>
-    
-    <!-- 冒泡 -->
-    
-        <script type="text/javascript">
-            // 只在桌面版网页启用特效
-            var windowWidth = $(window).width();
-            document.write(
-                '<script type="text/javascript" src="/libs/others/buble.js"><\/script>'
-            );
-        </script>
-    
 </body>
 
 </html>
